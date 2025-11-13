@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+langchain
+pydantic
+requests
+beautifulsoup4
+playwright
+pandas
+scikit-learn
+plotly
+pdfplumber
+pypdf
+pillow
+python-dotenv
+chromadb
+websockets
