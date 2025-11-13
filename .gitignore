@@ -1,2 +1,6 @@
-.venv
+
 .env
+
+module 
+frontend/node_modules
+frontend/package-lock.json
