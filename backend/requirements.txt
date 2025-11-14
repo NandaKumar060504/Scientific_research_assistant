@@ -14,3 +14,14 @@ pillow
 python-dotenv
 chromadb
 websockets
+httpx
+beautifulsoup4
+pytesseract
+sentence_transformers
+matplotlib
+fpdf
+reportlab
+lxml
+pdf2image
+markdown
+kaleido
