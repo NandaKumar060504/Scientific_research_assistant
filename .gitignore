@@ -1,13 +1,13 @@
 frontend/node_modules/
 .env
-backend/__pycache__/
 module 
 backend/node_modules/
 backend/memory/
 backend/__pycache__/
 backend/tools/__pycache__/
-frontend/node_modules
+frontend/node_modules/
 frontend/package-lock.json
 downloads/
 chroma_db/
 outputs/
+backend/__pycache__/app.cpython-312.pyc
