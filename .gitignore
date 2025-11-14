@@ -11,3 +11,4 @@ downloads/
 chroma_db/
 outputs/
 backend/__pycache__/app.cpython-312.pyc
+backend/agents/__pycache__/
