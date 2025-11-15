@@ -85,7 +85,8 @@ A **Groq-accelerated multi-agent research framework** that autonomously executes
 
 ## 🏗 Architecture
 
-> *(Insert your architecture diagram here — image file in repo)*
+> <img width="478" height="1024" alt="image" src="https://github.com/user-attachments/assets/bf88984c-6cb9-4a10-8570-36881f8c7a90" />
+
 
 ### Multi-Agent Workflow:
 Supervisor → Domain Scout → Question Generator → Data Alchemist → Experiment Designer → Critic → Writer
@@ -101,6 +102,43 @@ This repo contains a full **Docker Compose setup** including:
 - Nginx Reverse Proxy
 
 ---
+
+## 📁 Project Structure
+├── backend/
+│ ├── agents/ # Agent implementations
+│ │ ├── paper_generator.py
+│ │
+│ ├── tools/ # External utilities
+│ │ ├── chroma_client.py
+│ │ ├── groq_client.py
+│ │ └── ocr_pdf.py
+| | └── scraper.py
+| |  └── tavily_client.py
+│ ├── graph.py 
+│ ├── orchestrator.py r
+│ ├── app.py # FastAPI entry point
+│ ├── Dockerfile
+│ ├── requirements.txt
+│ ├── runtime.txt
+│ └── render.yaml # For Render.com deployment
+│
+├── frontend/
+│ ├── src/ # Main frontend source code
+│ │ ├── App.jsx # Primary UI component
+│ │ └── (other React components)
+│ │
+│ ├── dist/ # Production build output
+│ ├── node_modules/
+│ ├── index.html # App HTML entry
+│ ├── package.json
+│ ├── package-lock.json
+│ └── Dockerfile
+│
+├── docker-compose.yml # Multi-service orchestration
+└── README.md # Project documentation
+    
+
+
 
 ## ✅ Step 1 — Clone Repository
 ```bash
