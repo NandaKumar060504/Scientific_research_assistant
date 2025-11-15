@@ -12,5 +12,4 @@ chroma_db/
 outputs/
 backend/__pycache__/app.cpython-312.pyc
 backend/agents/__pycache__/
-nginx
 .DS_Store
