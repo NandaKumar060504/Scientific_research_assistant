@@ -93,54 +93,112 @@ Supervisor → Domain Scout → Question Generator → Data Alchemist → Experi
 
 ---
 
-# 🐳 Running the Project Locally (Docker Recommended)
+````markdown
+# 🐳 Running the Project
+You can run this project in two ways:
 
-This repo contains a full **Docker Compose setup** including:
-- Backend (FastAPI)
-- Frontend (Next.js)
-- ChromaDB
-- Nginx Reverse Proxy
+1.  **Using Docker (Recommended):** The easiest way to get all services (backend, frontend, DB, proxy) running together with a single command.
+2.  **Running Locally (Manual):** Good for development and running the backend and frontend services individually.
 
 ---
 
-## 📁 Project Structure
-├── backend/
-│ ├── agents/ # Agent implementations
-│ │ ├── paper_generator.py
-│ │
-│ ├── tools/ # External utilities
-│ │ ├── chroma_client.py
-│ │ ├── groq_client.py
-│ │ └── ocr_pdf.py
-| | └── scraper.py
-| |  └── tavily_client.py
-│ ├── graph.py 
-│ ├── orchestrator.py r
-│ ├── app.py # FastAPI entry point
-│ ├── Dockerfile
-│ ├── requirements.txt
-│ ├── runtime.txt
-│ └── render.yaml # For Render.com deployment
-│
-├── frontend/
-│ ├── src/ # Main frontend source code
-│ │ ├── App.jsx # Primary UI component
-│ │ └── (other React components)
-│ │
-│ ├── dist/ # Production build output
-│ ├── node_modules/
-│ ├── index.html # App HTML entry
-│ ├── package.json
-│ ├── package-lock.json
-│ └── Dockerfile
-│
-├── docker-compose.yml # Multi-service orchestration
-└── README.md # Project documentation
-    
+## Option 1: Running with Docker (Recommended)
 
+This repo contains a full **Docker Compose setup** including the FastAPI backend, Next.js frontend, ChromaDB, and an Nginx reverse proxy.
+### ✅ Step 1 — Clone Repository
 
-
-## ✅ Step 1 — Clone Repository
 ```bash
-git clone https://github.com/NandaKumar060504/Scientific_research_assistant.git
+git clone [https://github.com/NandaKumar060504/Scientific_research_assistant.git](https://github.com/NandaKumar060504/Scientific_research_assistant.git)
 cd Scientific_research_assistant
+````
+
+### ✅ Step 2 — Set Up Environment
+
+You will need to create a `.env` file to store your API keys (like the Groq API key). You can often copy an example file if one is provided.
+
+```bash
+# Example: copy an .env.example file (if it exists)
+cp .env.example .env
+
+# Now, edit the .env file and add your API keys
+nano .env 
+```
+
+### ✅ Step 3 — Build and Run
+
+This command will build the images and start all the containers.
+
+```bash
+docker compose up -d --build
+```
+
+Your application should now be accessible, typically at `http://localhost:80` (or whichever port Nginx is configured to expose).
+
+-----
+
+## Option 2: Running Locally (Manual Setup)
+
+If you prefer to run the backend and frontend services manually without Docker, follow these steps.
+
+### ✅ Step 1 — Clone Repository
+
+```bash
+git clone [https://github.com/NandaKumar060504/Scientific_research_assistant.git](https://github.com/NandaKumar060504/Scientific_research_assistant.git)
+cd Scientific_research_assistant
+```
+
+### ✅ Step 2 — Run the Backend (FastAPI)
+
+1.  Navigate to the backend directory (adjust the path if necessary):
+    ```bash
+    cd backend 
+    ```
+2.  Create a virtual environment and install dependencies:
+    ```bash
+    # Create virtual environment
+    python -m venv venv
+
+    # Activate virtual environment
+    # On macOS/Linux:
+    source venv/bin/activate
+    # On Windows:
+    # .\venv\Scripts\activate
+
+    # Install dependencies
+    pip install -r requirements.txt
+    ```
+3.  (Required) Create a `.env` file in this directory and add your API keys.
+4.  Run the Uvicorn server:
+    ```bash
+    uvicorn app:app --reload --port 8080
+    ```
+    The backend API will now be running on `http://localhost:8080`.
+
+### ✅ Step 3 — Run the Frontend (React/Next.js)
+
+1.  In a **new terminal**, navigate to the frontend directory (adjust the path if necessary):
+    ```bash
+    # From the root directory
+    cd frontend 
+    ```
+2.  Install the Node.js dependencies:
+    ```bash
+    npm install
+    ```
+3.  Run the frontend development server:
+    ```bash
+    npm run dev
+    ```
+    The frontend will now be accessible, typically on `http://localhost:3000`.
+
+-----
+
+## 👨‍💻 About the Author
+
+This project was created by **Nanda Kumar** as part of a Scientific Research Assistant Take-Home Assessment.
+
+  * **GitHub:** [@NandaKumar060504](https://www.google.com/search?q=https://github.com/NandaKumar060504)
+  * **LinkedIn:** `https://www.linkedin.com/in/nanda-kumar-t-30ba12240/`
+ 
+
+
