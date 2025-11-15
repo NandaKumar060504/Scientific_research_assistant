@@ -1,3 +1,5 @@
+# 
+
 fastapi
 uvicorn[standard]
 langchain
@@ -15,9 +17,7 @@ python-dotenv
 chromadb
 websockets
 httpx
-beautifulsoup4
 pytesseract
-sentence_transformers
 matplotlib
 fpdf
 reportlab
