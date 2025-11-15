@@ -26,6 +26,9 @@ torchvision==0.16.0+cpu
 
 sentence-transformers==2.2.2
 
+langgraph==0.0.58
+
+
 # --- Data ---
 pandas
 scikit-learn
