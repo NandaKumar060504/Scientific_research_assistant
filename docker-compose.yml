@@ -1,0 +1,97 @@
+
+
+# services:
+#   backend:
+#     build: ./backend
+#     container_name: research-backend
+#     restart: always
+#     ports:
+#       - "8080:8080"
+#     depends_on:
+#       - chroma
+#     volumes:
+#       - ./backend:/app
+#       - ./outputs:/app/outputs
+#     environment:
+#       CHROMA_HOST: chroma
+#       CHROMA_PORT: 8000
+
+#   frontend:
+#     build: ./frontend
+#     container_name: research-frontend
+#     command: ["/bin/sh", "-c", "echo 'Frontend built successfully' && exit 0"]
+#     volumes:
+#       - ./frontend/dist:/dist
+
+#   nginx:
+#     image: nginx:latest
+#     container_name: research-nginx
+#     restart: always
+#     depends_on:
+#       - backend
+#     ports:
+#       - "8082:80"
+#     volumes:
+#       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+#       - ./frontend/dist:/usr/share/nginx/html
+
+#   chroma:
+#     image: chromadb/chroma:latest
+#     container_name: research-chroma
+#     restart: always
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - chroma_data:/chroma
+
+# volumes:
+#   chroma_data:
+
+
+services:
+  backend:
+    image: research-backend
+    container_name: research-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - chroma
+    volumes:
+      - ./backend:/app
+      - ./outputs:/app/outputs
+    environment:
+      CHROMA_HOST: chroma
+      CHROMA_PORT: 8000
+
+  frontend:
+    image: research-frontend
+    container_name: research-frontend
+    volumes:
+      - frontend-dist:/app/dist
+
+  nginx:
+    image: nginx:latest
+    container_name: research-nginx
+    restart: always
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - "8082:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - frontend-dist:/usr/share/nginx/html
+
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: research-chroma
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma
+
+volumes:
+  chroma_data:
+  frontend-dist:
