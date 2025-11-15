@@ -4,8 +4,7 @@ langchain
 pydantic
 requests
 beautifulsoup4
-playwright==1.40.0
-playwright-stealth
+playwright
 pandas
 scikit-learn
 plotly
@@ -16,7 +15,9 @@ python-dotenv
 chromadb
 websockets
 httpx
+beautifulsoup4
 pytesseract
+sentence_transformers
 matplotlib
 fpdf
 reportlab
