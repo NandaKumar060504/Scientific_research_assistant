@@ -1,27 +1,51 @@
+# --- Web Framework ---
 fastapi
 uvicorn[standard]
-langchain
 pydantic
 requests
+httpx
+websockets
+python-dotenv
+
+# --- Parsing & scraping ---
 beautifulsoup4
-playwright
+lxml
+markdown
+
+# --- Playwright (NO BROWSERS INSTALLED) ---
+playwright==1.42.0
+# Prevent auto-install of Chromium/Firefox/WebKit during build
+# You will install browsers at runtime using: playwright install chromium
+
+# --- ML / NLP ---
+# CPU-only PyTorch (critical!)
+torch==2.1.0+cpu
+torchaudio==2.1.0+cpu
+torchvision==0.16.0+cpu
+-f https://download.pytorch.org/whl/cpu/torch_stable.html
+
+sentence-transformers==2.2.2
+
+# --- Data ---
 pandas
 scikit-learn
+
+# --- Plotting ---
+matplotlib
 plotly
+kaleido==0.2.1
+
+# --- PDF / OCR ---
 pdfplumber
 pypdf
-pillow
-python-dotenv
-chromadb
-websockets
-httpx
-beautifulsoup4
-pytesseract
-sentence_transformers
-matplotlib
-fpdf
 reportlab
-lxml
+fpdf
+pillow
 pdf2image
-markdown
-kaleido
+pytesseract
+
+# --- Vector DB ---
+chromadb==0.4.22
+
+# --- Other ---
+playwright-stealth
