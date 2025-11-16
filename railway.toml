@@ -1,0 +1,6 @@
+[build]
+builder = "python"
+buildCommand = "pip install -r backend/requirements.txt"
+
+[start]
+startCommand = "python backend/main.py"
