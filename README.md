@@ -58,12 +58,12 @@ A **Groq-accelerated multi-agent research framework** that autonomously executes
 
 ### **Framework**
 - LangChain
-- Optional: LangGraph (for iterative loop)
+- Optional: LangGraph (iterative control)
 
 ### **Data Layer**
 - ChromaDB (local vector DB)
 - Firecrawl API
-- BeautifulSoup (HTML parsing)
+- BeautifulSoup
 - PDF + OCR Extraction
 - ArXiv API
 
@@ -84,25 +84,206 @@ A **Groq-accelerated multi-agent research framework** that autonomously executes
 ---
 
 ## 🏗 Architecture
-
-> *(Insert your architecture diagram here — image file in repo)*
-
-### Multi-Agent Workflow:
+<img width="478" height="1024" alt="image" src="https://github.com/user-attachments/assets/9474c05c-1348-4607-8555-9c1ff959b61b" />
 Supervisor → Domain Scout → Question Generator → Data Alchemist → Experiment Designer → Critic → Writer
 
----
-
-# 🐳 Running the Project Locally (Docker Recommended)
-
-This repo contains a full **Docker Compose setup** including:
-- Backend (FastAPI)
-- Frontend (Next.js)
-- ChromaDB
-- Nginx Reverse Proxy
+Multi-Agent Workflow:
 
 ---
 
-## ✅ Step 1 — Clone Repository
+# 🏁 Running Locally (Step-by-Step)
+
+Below are complete **local development instructions** for running the system **without Docker** using `localhost`.
+
+---
+
+## ✅ **Step 1 — Clone the Repository**
 ```bash
 git clone https://github.com/NandaKumar060504/Scientific_research_assistant.git
 cd Scientific_research_assistant
+````
+
+---
+
+## ✅ **Step 2 — Backend Setup (FastAPI)**
+
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate     # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Create `.env` inside `/backend`:
+
+```
+GROQ_API_KEY=your_groq_api_key
+FIRECRAWL_API_KEY=your_firecrawl_key
+CHROMA_DB_PATH=./chroma_db
+```
+
+---
+
+## ✅ **Step 3 — Run Backend on Localhost**
+
+Start FastAPI:
+
+```bash
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8080
+```
+
+Backend will be available at:
+
+* [http://localhost:8080](http://localhost:8000)
+
+---
+
+## ✅ **Step 4 — Frontend Setup (Next.js / React)**
+
+Open a new terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend will be available at:
+👉 **[http://localhost:8082](http://localhost:8082)**
+
+---
+
+## ✅ **Step 5 — Start ChromaDB (If Required)**
+
+Some setups require manually running Chroma:
+
+```bash
+python -m chromadb run --path ./chroma_db
+```
+
+ChromaDB will run locally on:
+👉 [http://localhost:8001](http://localhost:8001) (default internal port)
+
+---
+
+## ✅ **Step 6 — Access the Full System**
+
+* 🌐 **Web UI**: [http://localhost:8082](http://localhost:8082)
+* ⚙️ **Backend API**: [http://localhost:8080](http://localhost:8080)
+
+From the UI, you can:
+
+* Select a research domain
+* Trigger the multi-agent pipeline
+* View live agent logs
+* Download the final research paper + dashboard
+
+---
+
+# 🐳 Running with Docker (Alternative Recommended Setup)
+
+This repository includes a production-ready **Docker Compose** setup.
+
+---
+
+## 🐳 **Step 1 — Add Environment Variables**
+
+Inside `/backend/.env`:
+
+```
+GROQ_API_KEY=your_groq_api_key
+FIRECRAWL_API_KEY=your_firecrawl_key
+CHROMA_DB_PATH=./chroma_db
+```
+
+---
+
+## 🐳 **Step 2 — Run Docker Compose**
+
+```bash
+docker-compose up --build
+```
+
+### Services:
+
+| Component    | URL                                                      |
+| ------------ | -------------------------------------------------------- |
+| Frontend UI  | [http://localhost:3000](http://localhost:8082)           |
+| Backend API  | [http://localhost:8000](http://localhost:8080)           |
+
+
+---
+
+## 📊 Outputs Generated
+
+### **1. Scientific Research Paper**
+
+* Markdown `.md`
+* PDF output
+* Structured sections (Abstract, Methods, Results, Discussion)
+
+### **2. Interactive Dashboards**
+
+* Plotly graphs
+* Statistical results
+* Trends & correlations
+
+### **3. Metadata**
+
+* JSON schema
+* Confidence scores
+* Dataset lineage
+
+---
+
+## 📁 Repository Structure
+
+```
+/backend            → FastAPI, agent logic, vector DB, data pipeline  
+/frontend           → Next.js / React UI  
+/nginx              → Reverse proxy configs  
+docker-compose.yml  → Multi-container orchestration  
+Dockerfile          → Multi-stage backend build  
+README.md           
+```
+
+---
+
+## 🎯 User Journey
+
+1. Select or auto-discover a domain
+2. Agents run sequentially in the UI
+3. Data scraped + embedded
+4. Experiments performed
+5. Critic agent refines results
+6. Writer produces final paper
+7. Download results
+
+---
+
+## 🔮 Future Improvements
+
+* Multimodal scientific figure extraction
+* Full simulation engine for experiments
+* PubMed + Semantic Scholar integrations
+* Persistent long-term research memory
+* Offline inference support
+
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 📬 Contact
+
+**Name:** Nanda Kumar
+**GitHub:** [https://github.com/NandaKumar060504](https://github.com/NandaKumar060504)
+**Email:** [nandakumar3446@gmail.com](mailto:nandakumar3446@gmail.com)
+
+```
+
+
